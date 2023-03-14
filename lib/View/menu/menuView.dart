@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class MenuView extends ConsumerStatefulWidget {
   const MenuView({
@@ -19,7 +20,7 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
   late AnimationController controller;
 
   var itemTitles = [
-    "What is Urban Farming/ Agriculture",
+    "What is Urban Farming?",
     "Types of Urban farming",
     "Plant Calendar",
     "Organic fertilizer",
@@ -39,111 +40,135 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/menuBG.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: FadeTransition(
-            opacity: Tween<double>(begin: 0, end: 1).animate(
-              CurvedAnimation(
-                parent: controller,
-                curve: const Interval(
-                  0.5,
-                  1,
-                  curve: Curves.ease,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Transform.translate(
+                  offset: const Offset(0, 35),
+                  child: Lottie.asset(
+                    'assets/lottie/plantSway.json',
+                  ),
                 ),
               ),
-            ),
-            child: Column(
-              children: [
-                AutoSizeText(
-                  "Hello, what are you willing to learn?",
-                  style: GoogleFonts.literata(
-                    color: Colors.white,
-                  ),
-                  maxLines: 1,
-                  maxFontSize: 50,
-                  minFontSize: 20,
-                ),
-                const SizedBox(height: 20),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: List.generate(4, (index){
-                                return   Column(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        context.push("/item${((index + 1) * 2)-1}");
-                                      },
-                                      child: Image.asset(
-                                        "assets/images/menuImages/item${((index + 1) * 2)-1}.png",
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    AutoSizeText(
-                                      itemTitles[((index + 1) * 2)-2],
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.literata(
-                                        color: Colors.white,
-                                      ),
-                                      maxLines: 2,
-                                      maxFontSize: 26,
-                                      minFontSize: 16,
-                                    ),
-                                  ],
-                                );
-                              })
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: List.generate(4, (index){
-                                return SizedBox(
-                                  child: Column(
-                                    children: [
-                                      Image.asset(
-                                        "assets/images/menuImages/item${((index + 1) * 2)}.png",
-                                      ),
-                                      const SizedBox(height: 10),
-                                      AutoSizeText(
-                                        itemTitles[((index + 1) * 2) -1 ],
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.literata(
-                                          color: Colors.white,
-                                        ),
-                                        maxLines: 2,
-                                        maxFontSize: 26,
-                                        minFontSize: 16,
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              })
-                          ),
-                        ),
-                      ]
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: FadeTransition(
+                  opacity: Tween<double>(begin: 0, end: 1).animate(
+                    CurvedAnimation(
+                      parent: controller,
+                      curve: const Interval(
+                        0.5,
+                        1,
+                        curve: Curves.ease,
+                      ),
                     ),
                   ),
-                )
-              ],
-            ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        "What are you willing to learn?",
+                        style: GoogleFonts.clickerScript(
+                          fontSize: 30
+                        ),
+                        maxLines: 1,
+                        maxFontSize: 50,
+                        minFontSize: 20,
+                      ),
+                      const SizedBox(height: 20),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: List.generate(4, (index){
+                                      return  Container(
+                                        height: 175,
+                                        margin: const EdgeInsets.only(bottom: 20),
+                                        child: Column(
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                context.push("/item${((index + 1) * 2)-1}");
+                                              },
+                                              child: Image.asset(
+                                                "assets/images/menuImages/item${((index + 1) * 2)-1}.png",
+                                              ),
+                                            ),
+                                            const SizedBox(height: 10),
+                                            AutoSizeText(
+                                              itemTitles[((index + 1) * 2)-2],
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.literata(),
+                                              maxLines: 2,
+                                              maxFontSize: 26,
+                                              minFontSize: 16,
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    })
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: List.generate(4, (index){
+                                      return InkWell(
+                                        onTap: () {
+                                          context.push("/item${((index + 1) * 2)}");
+                                        },
+                                        child: Container(
+                                          height: 175,
+                                          margin: const EdgeInsets.only(bottom: 20),
+                                          child: Column(
+                                            children: [
+                                              Image.asset(
+                                                "assets/images/menuImages/item${((index + 1) * 2)}.png",
+                                              ),
+                                              const SizedBox(height: 10),
+                                              AutoSizeText(
+                                                itemTitles[((index + 1) * 2) -1 ],
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.literata(),
+                                                maxLines: 2,
+                                                maxFontSize: 26,
+                                                minFontSize: 16,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    })
+                                ),
+                              ),
+                            ]
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 75,)
+                    ],
+                  ),
+                ),
+              ),
+            ],
           )
         ),
       ),

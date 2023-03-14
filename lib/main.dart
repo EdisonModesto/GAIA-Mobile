@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     precacheImage(const AssetImage("assets/images/splashBG.png"), context);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'GAIA Mobile',
       theme: ThemeData(
         // This is the theme of your application.
         //

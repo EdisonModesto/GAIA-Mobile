@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gaia/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Item1View extends ConsumerStatefulWidget {
-  const Item1View({
+import '../constants/colors.dart';
+
+class DescView extends ConsumerStatefulWidget {
+  const DescView({
+    required this.title,
+    required this.image,
+    required this.desc,
     Key? key,
   }) : super(key: key);
 
+  final title, image, desc;
+
   @override
-  ConsumerState createState() => _Item1ViewState();
+  ConsumerState createState() => _DescViewState();
 }
 
-class _Item1ViewState extends ConsumerState<Item1View> {
+class _DescViewState extends ConsumerState<DescView> {
   @override
   Widget build(BuildContext context) {
-    return
-
-
-      Scaffold(
+    return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -31,7 +33,7 @@ class _Item1ViewState extends ConsumerState<Item1View> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Image.asset(
-                      "assets/images/splashBG.png",
+                      widget.image,
                       alignment: Alignment.center,
                       scale: 200,
                       fit: BoxFit.cover,
@@ -44,11 +46,11 @@ class _Item1ViewState extends ConsumerState<Item1View> {
                       child: Chip(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         label: Text(
-                          "Urban Agriculture",
+                          widget.title,
                           style: GoogleFonts.literata(
-                            color:AppColors().primaryColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18
+                              color:AppColors().primaryColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18
                           ),
                         ),
                       ),
@@ -61,27 +63,17 @@ class _Item1ViewState extends ConsumerState<Item1View> {
               flex: 55,
               child: SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Text(
-                    """It is the growing of vegetables or food in a place or city, or populated area. This method uses an empty loop that is normally crowded.
-
-
-Benefits of Urban Agriculture
-Unused property can be utilized.
-Save on transportation costs.
-Eat with confidence!
-Helps nature.
-Meaningful pastime.
-Additional income.
-
-
-SOURCE: BUREAU OF PLANT INDUSTRY""",
-                    style: GoogleFonts.literata(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors().primaryColor
-                    ),
-                  )
+                    padding: const EdgeInsets.all(20.0),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        widget.desc,
+                        style: GoogleFonts.literata(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors().primaryColor
+                        ),
+                      ),
+                    )
                 ),
               ),
             )
