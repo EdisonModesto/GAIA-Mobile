@@ -1,5 +1,6 @@
 import 'package:gaia/View/menu/item1/Item1View.dart';
 import 'package:gaia/common/DescView.dart';
+import 'package:gaia/common/PageView.dart';
 import 'package:go_router/go_router.dart';
 
 import '../View/menu/item2/Item2View.dart';
@@ -27,6 +28,10 @@ var routes = GoRouter(
       path: "/desc:title/:image/:desc",
       name: "desc",
       builder: (context, state) => DescView(title: state.params["title"], image: state.params["image"], desc: state.params["desc"]),
+    ),
+    GoRoute(
+      path: "/pageView",
+      builder: (context, state) => DescPageView(pageDetails: state.extra as PageArguments),
     ),
     GoRoute(
       path: "/item1",

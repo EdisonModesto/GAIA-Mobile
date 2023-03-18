@@ -57,9 +57,57 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Transform.translate(
-                  offset: const Offset(0, 35),
-                  child: Lottie.asset(
-                    'assets/lottie/plantSway.json',
+                  offset: const Offset(0, 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Transform.translate(
+                        offset: const Offset(80, 0),
+                        child: SizedBox(
+                          height: 75,
+                          child: Lottie.asset(
+                            'assets/lottie/plantWalk.json',
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: const Offset(45, 0),
+                        child: SizedBox(
+                          height: 75,
+                          child: Lottie.asset(
+                            'assets/lottie/plantWalk.json',
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: const Offset(0, 8),
+                        child: SizedBox(
+                          height: 100,
+                          child: Lottie.asset(
+                            'assets/lottie/plantWalk.json',
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: const Offset(-45, 0),
+                        child: SizedBox(
+                          height: 75,
+                          child: Lottie.asset(
+                            'assets/lottie/plantWalk.json',
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: const Offset(-80, 0),
+                        child: SizedBox(
+                          height: 75,
+                          child: Lottie.asset(
+                            'assets/lottie/plantWalk.json',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -163,7 +211,7 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                           ),
                         ),
                       ),
-                      const SizedBox(height: 75,)
+                      const SizedBox(height: 55),
                     ],
                   ),
                 ),
