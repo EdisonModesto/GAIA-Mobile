@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../ViewModel/LanugageViewModel.dart';
+
 class MenuView extends ConsumerStatefulWidget {
   const MenuView({
     Key? key,
@@ -30,6 +32,17 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
     "Recyclable Ideas"
   ];
 
+  var itemTitlesTagalog = [
+    "Ano ang Urban Farming/Agriculture",
+    "Mga Uri ng Urban farming",
+    "Kalendaryo ng halaman",
+    "Organikong pataba",
+    "Soil mixtures",
+    "Pests and Control",
+    "Mga tip sa malusog na halaman",
+    "Mga Recyclable na Ideya"
+  ];
+
   @override
   void initState() {
     controller = AnimationController(
@@ -48,10 +61,14 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
 
+    var lang = ref.watch(langProvider);
+    var langState = ref.read(langProvider.notifier).state;
+
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
+          //color: Color(0xff414141),
           child: Stack(
             children: [
               Align(
@@ -127,14 +144,33 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(
-                        "What are you willing to learn?",
-                        style: GoogleFonts.clickerScript(
-                          fontSize: 30
-                        ),
-                        maxLines: 1,
-                        maxFontSize: 50,
-                        minFontSize: 20,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: AutoSizeText(
+                              "What are you willing to learn?",
+                              style: GoogleFonts.clickerScript(
+                                fontSize: 30
+                              ),
+                              maxLines: 1,
+                              maxFontSize: 50,
+                              minFontSize: 20,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              ref.read(langProvider.notifier).changeLang(!(ref.read(langProvider.notifier).state));
+                              print(ref.read(langProvider.notifier).state);
+                            },
+                            icon: const Icon(Icons.language),
+                          ),
+                          Switch(
+                            value: true,
+                            onChanged: (value) {
+
+                            },
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
                       Expanded(
@@ -161,7 +197,8 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                             ),
                                             const SizedBox(height: 10),
                                             AutoSizeText(
-                                              itemTitles[((index + 1) * 2)-2],
+                                              langState ? itemTitles[((index + 1) * 2)-2] : itemTitlesTagalog[((index + 1) * 2)-2],
+                                             // itemTitles[((index + 1) * 2)-2],
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.literata(),
                                               maxLines: 2,
@@ -189,11 +226,12 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                           child: Column(
                                             children: [
                                               Image.asset(
-                                                "assets/images/menuImages/item${((index + 1) * 2)}.png",
+                                                 "assets/images/menuImages/item${((index + 1) * 2)}.png",
                                               ),
                                               const SizedBox(height: 10),
                                               AutoSizeText(
-                                                itemTitles[((index + 1) * 2) -1 ],
+                                                langState ? itemTitles[((index + 1) * 2) -1 ] : itemTitlesTagalog[((index + 1) * 2) -1 ],
+                                                //itemTitles[((index + 1) * 2) -1 ],
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.literata(),
                                                 maxLines: 2,

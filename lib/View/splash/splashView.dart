@@ -2,6 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:shared_preferences/shared_preferences.dart";
+
+import "../../ViewModel/LanugageViewModel.dart";
 
 class SplashView extends ConsumerStatefulWidget {
   const SplashView({
@@ -27,6 +30,21 @@ class _SplashLogoState extends ConsumerState<SplashView> with SingleTickerProvid
     context.go("/Menu");
   }
 
+  Future<void> checkPreferenceds() async {
+
+    ref.read(langProvider.notifier).checkLang();
+
+/*    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? lang = prefs.getBool('lang');
+    final bool? dark = prefs.getBool('dark');
+
+    if (lang == null) {
+      prefs.setBool('lang', true);
+    }
+    if (dark == null) {
+      prefs.setBool('dark', false);
+    }*/
+  }
 
   @override
   void initState() {

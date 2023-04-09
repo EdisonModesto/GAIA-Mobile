@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:lottie/lottie.dart";
 
 import "../../../constants/colors.dart";
 
@@ -32,8 +33,16 @@ class _Item4ViewState extends ConsumerState<Item4View> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    context.push("/FFJ");
+                  },
                   child: Chip(
+                    avatar: Lottie.asset(
+                        "assets/lottie/prefix.json",
+                        height: 200,
+                        width: 200
+                      //fit: BoxFit.cover,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     label: SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -51,8 +60,16 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    context.push("/FAA");
+                  },
                   child: Chip(
+                    avatar: Lottie.asset(
+                        "assets/lottie/prefix.json",
+                        height: 200,
+                        width: 200
+                      //fit: BoxFit.cover,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     label: SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -70,8 +87,16 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    context.push("/FPJ");
+                  },
                   child: Chip(
+                    avatar: Lottie.asset(
+                        "assets/lottie/prefix.json",
+                        height: 200,
+                        width: 200
+                      //fit: BoxFit.cover,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     label: SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -89,8 +114,16 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    context.push("/EggShells");
+                  },
                   child: Chip(
+                    avatar: Lottie.asset(
+                        "assets/lottie/prefix.json",
+                        height: 200,
+                        width: 200
+                      //fit: BoxFit.cover,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     label: SizedBox(
                       width: MediaQuery.of(context).size.width,
@@ -108,8 +141,16 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    context.push("/compost");
+                  },
                   child: Chip(
+                    avatar: Lottie.asset(
+                        "assets/lottie/prefix.json",
+                        height: 200,
+                        width: 200
+                      //fit: BoxFit.cover,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     label: SizedBox(
                       width: MediaQuery.of(context).size.width,
