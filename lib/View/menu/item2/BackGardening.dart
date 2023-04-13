@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../constants/colors.dart';
 import '../../../common/PageView.dart';
@@ -24,6 +25,8 @@ class _SubMenuViewState extends ConsumerState<BackGardeningView> {
 
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -90,13 +93,14 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                               width: 200
                             //fit: BoxFit.cover,
                           ),
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                           label: SizedBox(
                             child: Center(
                               child: Text(
                                 "What is Container Gardening?",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -113,6 +117,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -126,7 +131,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                               child: Text(
                                 "Materials",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -158,6 +163,8 @@ Ilagay ang lupang pagtataniman.
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -171,7 +178,7 @@ Ilagay ang lupang pagtataniman.
                               child: Text(
                                 "Steps",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),

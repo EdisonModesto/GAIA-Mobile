@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../ViewModel/DarkViewModel.dart';
 import '../constants/adHelper.dart';
 import '../constants/colors.dart';
 
@@ -46,6 +48,8 @@ class _BubbleViewState extends ConsumerState<BubbleView> {
 
   @override
   Widget build(BuildContext context) {
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -66,25 +70,30 @@ class _BubbleViewState extends ConsumerState<BubbleView> {
               Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(239, 239, 239, 0.9),
+                    color: themeState ? AppColors().dark : Color.fromRGBO(239, 239, 239, 0.9),
                     borderRadius: BorderRadius.all(Radius.circular(16))
                 ),
                 child: Column(
                   children: [
                     Chip(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
-                      label: Text(
+                      label: AutoSizeText(
                         widget.title,
                         style: GoogleFonts.literata(
                             color: AppColors().primaryColor,
                             fontWeight: FontWeight.w600,
-                            fontSize: 18),
+                            ),
+                        maxLines: 1,
+                        maxFontSize: 18,
+                        minFontSize: 0,
                       ),
                     ),
                     Text(
                       widget.desc,
+                      textAlign: TextAlign.justify,
                       style: GoogleFonts.poppins(
-                          fontSize: 16
+                          fontSize: 16,
+                        color: themeState ? Colors.white : Colors.black,
                       ),
                     ),
                   ],

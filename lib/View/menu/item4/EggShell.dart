@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
+import '../../../constants/colors.dart';
 
 class EggShell extends ConsumerStatefulWidget {
   const EggShell({
@@ -20,6 +22,8 @@ class _EggShellState extends ConsumerState<EggShell> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -65,6 +69,8 @@ class _EggShellState extends ConsumerState<EggShell> {
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -77,7 +83,7 @@ class _EggShellState extends ConsumerState<EggShell> {
                               child: Text(
                                 langState ? "What is Egg Shell Calphos?" : "Ano ang Egg Shell Calphos?",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -118,6 +124,8 @@ Mga sangkap:
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -131,7 +139,7 @@ Mga sangkap:
                               child: Text(
                                 langState ? "Materials" : "Mga Materyales",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -164,6 +172,8 @@ Step 4: Hintaying huminto ang reaksiyong kemikal at pagkatapos ay takpan ang lal
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -177,7 +187,7 @@ Step 4: Hintaying huminto ang reaksiyong kemikal at pagkatapos ay takpan ang lal
                               child: Text(
                                 langState ? "Steps" : "Paraan ng Paggawa",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -196,6 +206,8 @@ Step 4: Hintaying huminto ang reaksiyong kemikal at pagkatapos ay takpan ang lal
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -208,7 +220,7 @@ Step 4: Hintaying huminto ang reaksiyong kemikal at pagkatapos ay takpan ang lal
                               child: Text(
                                 langState ? "Use of Calphos" : "Paraan ng Paggamit ng Calphos",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),

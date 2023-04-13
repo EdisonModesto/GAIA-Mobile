@@ -4,6 +4,7 @@ import "package:go_router/go_router.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
+import "../../ViewModel/DarkViewModel.dart";
 import "../../ViewModel/LanugageViewModel.dart";
 
 class SplashView extends ConsumerStatefulWidget {
@@ -60,6 +61,10 @@ class _SplashLogoState extends ConsumerState<SplashView> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
+
+    ref.read(langProvider.notifier).checkLang();
+    ref.read(darkProvider.notifier).checkTheme();
+
     return Scaffold(
       body: SafeArea(
         child: AnimatedSwitcher(

@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
+import '../../../constants/colors.dart';
 
 class FFJ extends ConsumerStatefulWidget {
   const FFJ({
@@ -20,6 +22,8 @@ class _FFJState extends ConsumerState<FFJ> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -69,6 +73,8 @@ SOURCE: Department of Agriculture"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -81,7 +87,7 @@ SOURCE: Department of Agriculture"""
                               child: Text(
                                 langState? "What is Fermented Fruit Juice?" : "Ano ang Fermented Fruit Juice?",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -109,6 +115,8 @@ SOURCE: Department of Agriculture
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -122,7 +130,7 @@ SOURCE: Department of Agriculture
                               child: Text(
                                 langState ? "Materials" : "Materyales",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -163,6 +171,8 @@ https://drive.google.com/drive/folders/1l-FK0qPhX0-Wsd3zM1rfVCpKUxMIICyJ?usp=sha
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -176,7 +186,7 @@ https://drive.google.com/drive/folders/1l-FK0qPhX0-Wsd3zM1rfVCpKUxMIICyJ?usp=sha
                               child: Text(
                                 langState ? "Steps" : "Paraan ng Paggawa",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -210,6 +220,8 @@ SOURCE: Department of Agriculture"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -222,7 +234,7 @@ SOURCE: Department of Agriculture"""
                               child: Text(
                                 langState ? "How to use FFJ" : "Paraan ng Paggamit ng FFJ",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -260,6 +272,8 @@ SOURCE: Department of Agriculture"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -272,7 +286,7 @@ SOURCE: Department of Agriculture"""
                               child: Text(
                                 langState ? "Benefits of FFJ" : "Benepisyo ng Paggamit ng FFJ",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),

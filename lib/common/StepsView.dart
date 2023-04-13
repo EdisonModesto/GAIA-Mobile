@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../ViewModel/DarkViewModel.dart';
 import '../constants/adHelper.dart';
 import '../constants/colors.dart';
 
@@ -45,9 +46,12 @@ class _StepsViewState extends ConsumerState<StepsView> {
 
   @override
   Widget build(BuildContext context) {
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
-      body: SizedBox(
+      body: Container(
         width: MediaQuery.of(context).size.width,
+        color: themeState ? AppColors().dark : Colors.white,
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(
@@ -73,7 +77,8 @@ class _StepsViewState extends ConsumerState<StepsView> {
                           style: GoogleFonts.literata(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Colors.black),
+                              color: themeState ? Colors.white : Colors.black
+                          ),
                         ),
                       )),
                 ),

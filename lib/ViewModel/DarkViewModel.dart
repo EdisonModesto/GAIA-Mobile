@@ -1,29 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LangNotifier extends StateNotifier<bool> {
-  LangNotifier() : super(true);
+class DarkNotifier extends StateNotifier<bool> {
+  DarkNotifier() : super(false);
 
-  void changeLang(bool value) async {
+  void changeTheme(bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('lang', value);
+    prefs.setBool('dark', value);
     state = value;
   }
 
-  checkLang() async {
+  checkTheme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final bool? lang = prefs.getBool('lang');
+    final bool? lang = prefs.getBool('dark');
     if (lang == null) {
-      prefs.setBool('lang', true);
+      prefs.setBool('dark', false);
     } else {
       state = lang;
     }
   }
 
-
 }
 
 
-final langProvider = StateNotifierProvider((ref){
-  return LangNotifier();
+final darkProvider = StateNotifierProvider((ref){
+  return DarkNotifier();
 });

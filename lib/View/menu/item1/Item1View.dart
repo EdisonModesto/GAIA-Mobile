@@ -5,6 +5,7 @@ import 'package:gaia/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 
 class Item1View extends ConsumerStatefulWidget {
@@ -20,10 +21,13 @@ class _Item1ViewState extends ConsumerState<Item1View> {
   @override
   Widget build(BuildContext context) {
     ref.watch(langProvider);
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     var langState = ref.read(langProvider.notifier).state;
     return Scaffold(
-      body: SizedBox(
+      body: Container(
         width: MediaQuery.of(context).size.width,
+        color: themeState ? AppColors().dark : Colors.white,
         child: Column(
           children: [
             Expanded(
@@ -96,7 +100,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY
                       style: GoogleFonts.literata(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Colors.black,
+                        color: themeState ? Colors.white : Colors.black,
                       ),
                     )
                   ),

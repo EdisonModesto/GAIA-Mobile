@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
+import '../../../constants/colors.dart';
 
 class CompostView extends ConsumerStatefulWidget {
   const CompostView({
@@ -20,6 +22,8 @@ class _CompostViewState extends ConsumerState<CompostView> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -65,6 +69,8 @@ class _CompostViewState extends ConsumerState<CompostView> {
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
@@ -77,7 +83,7 @@ class _CompostViewState extends ConsumerState<CompostView> {
                               child: Text(
                                 langState ? "Whats is Compost?" : "Ano ang Compost?",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -107,6 +113,8 @@ class _CompostViewState extends ConsumerState<CompostView> {
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -120,7 +128,7 @@ class _CompostViewState extends ConsumerState<CompostView> {
                               child: Text(
                                 langState ? "Materials" : "Mga Materyales",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -150,6 +158,7 @@ https://www.youtube.com/watch?v=F4AicGPEmL8"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -163,7 +172,7 @@ https://www.youtube.com/watch?v=F4AicGPEmL8"""
                               child: Text(
                                 langState ? "Steps" : "Paraan ng Paggawa",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -181,6 +190,7 @@ https://www.youtube.com/watch?v=F4AicGPEmL8"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -193,7 +203,7 @@ https://www.youtube.com/watch?v=F4AicGPEmL8"""
                               child: Text(
                                 langState ? "Use of Compost" : "Paraan ng Paggamit ng Compost",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),

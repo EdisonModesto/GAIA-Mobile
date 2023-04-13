@@ -4,6 +4,7 @@ import "package:go_router/go_router.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:lottie/lottie.dart";
 
+import "../../../ViewModel/DarkViewModel.dart";
 import "../../../constants/colors.dart";
 
 class Item4View extends ConsumerStatefulWidget {
@@ -18,6 +19,8 @@ class Item4View extends ConsumerStatefulWidget {
 class _Item4ViewState extends ConsumerState<Item4View> {
   @override
   Widget build(BuildContext context) {
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -37,6 +40,8 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                     context.push("/FFJ");
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -50,7 +55,7 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                         child: Text(
                           "Fermented Fruit Juice (FFJ)",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                             color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -64,6 +69,8 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                     context.push("/FAA");
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -77,7 +84,7 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                         child: Text(
                           "Fish Amino Acid ( FAA)",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -91,6 +98,8 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                     context.push("/FPJ");
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -104,7 +113,7 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                         child: Text(
                           "Fermented Plant Juice (FPJ)",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -118,6 +127,8 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                     context.push("/EggShells");
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -131,7 +142,7 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                         child: Text(
                           "Egg shell (Calphos)",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -145,6 +156,8 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                     context.push("/compost");
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -158,7 +171,7 @@ class _Item4ViewState extends ConsumerState<Item4View> {
                         child: Text(
                           "Compost",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),

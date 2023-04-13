@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../common/PageView.dart';
 import '../../../constants/colors.dart';
@@ -25,6 +26,9 @@ class _Item2ViewState extends ConsumerState<Item2View> {
 
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -50,6 +54,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                 },
                 child: Chip(
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                     "assets/lottie/prefix.json",
                     height: 200,
@@ -62,7 +67,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                       child: Text(
                         "Backyard Gardening",
                         style: GoogleFonts.literata(
-                          color: AppColors().primaryColor,
+                          color: themeState ? Colors.white : AppColors().primaryColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 18
                         ),
@@ -76,6 +81,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                   context.push("/backyardGardening");
                 },
                 child: Chip(
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                       "assets/lottie/prefix.json",
                       height: 200,
@@ -89,7 +95,8 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                       child: Text(
                         "Container Gardening",
                         style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
+
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                         ),
@@ -103,6 +110,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                   context.push("/hydrophonics");
                 },
                 child: Chip(
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                       "assets/lottie/prefix.json",
                       height: 200,
@@ -116,7 +124,8 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                       child: Text(
                         "Hydroponics",
                         style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
+
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                         ),
@@ -149,6 +158,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                   });
                 },
                 child: Chip(
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                       "assets/lottie/prefix.json",
                       height: 200,
@@ -162,7 +172,8 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                       child: Text(
                         "Vertical/Wall Farming",
                         style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
+
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                         ),
@@ -194,6 +205,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                   );
                 },
                 child: Chip(
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                       "assets/lottie/prefix.json",
                       height: 200,
@@ -207,7 +219,8 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                       child: Text(
                         "Aquaponics",
                         style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
+
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                         ),
@@ -226,6 +239,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                   });
                 },
                 child: Chip(
+                  backgroundColor: themeState ? AppColors().dark : Colors.white,
                   avatar: Lottie.asset(
                       "assets/lottie/prefix.json",
                       height: 200,
@@ -239,7 +253,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                       child: Text(
                         "Rooftop gardening",
                         style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                         ),

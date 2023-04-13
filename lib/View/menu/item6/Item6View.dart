@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../common/PageView.dart';
 import '../../../constants/colors.dart';
@@ -23,6 +24,9 @@ class _Item6ViewState extends ConsumerState<Item6View> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
+
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -94,6 +98,8 @@ Dapat tanggalin ang mga labi at mga damo sa iyong hardin dahil nagsisilbi itong 
                   );
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -107,7 +113,7 @@ Dapat tanggalin ang mga labi at mga damo sa iyong hardin dahil nagsisilbi itong 
                         child: Text(
                           langState ? "Prevention" : "Pagsawata",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -160,6 +166,8 @@ Dapat tanggalin ang mga labi at mga damo sa iyong hardin dahil nagsisilbi itong 
                     );
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -173,7 +181,7 @@ Dapat tanggalin ang mga labi at mga damo sa iyong hardin dahil nagsisilbi itong 
                         child: AutoSizeText(
                           langState ? "Ways for Controlling Diseases and Pests" : "Mga paraan ng pagkontrol sa mga peste",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                              // fontSize: 18
                           ),
@@ -239,6 +247,8 @@ Ang mga roundworms ay mabisa laban sa mga caterpillar, isang karaniwang insekto 
                     );
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -252,7 +262,7 @@ Ang mga roundworms ay mabisa laban sa mga caterpillar, isang karaniwang insekto 
                         child: AutoSizeText(
                           langState ? "Beneficial Insects" : "Kapaki-pakinabang na mga Insekto",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                              // fontSize: 18
                           ),
@@ -316,6 +326,8 @@ Mga likas na pestisidyo para sa mga insektong sumisipsip ng dagta:
                     );
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -329,7 +341,7 @@ Mga likas na pestisidyo para sa mga insektong sumisipsip ng dagta:
                         child: AutoSizeText(
                           langState ? "Natural Pesticides" : "Likas na mga Pestisidyo",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white : AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),

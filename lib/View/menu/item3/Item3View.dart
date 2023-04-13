@@ -5,6 +5,7 @@ import 'package:gaia/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 
 class Item3View extends ConsumerStatefulWidget {
@@ -36,6 +37,8 @@ class _Item3ViewState extends ConsumerState<Item3View> {
   Widget build(BuildContext context) {
     ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -63,10 +66,11 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                       const SizedBox(width: 20),
                       Chip(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
+                        backgroundColor: themeState ? AppColors().dark : Colors.white,
                         label: Text(
                           langState ? "Plant Calendar" : "Kalendaryo ng Halaman",
                           style: GoogleFonts.literata(
-                            color: AppColors().primaryColor,
+                            color: themeState ? Colors.white : AppColors().primaryColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 18
                           ),
@@ -89,7 +93,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                           height: 50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
+                            color: themeState ? AppColors().dark : Colors.white,
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Center(
@@ -97,7 +101,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                               langState ? "Vegetables/ Crops" : "Gulay/ Pananim",
                               textAlign: TextAlign.center,
                               style: GoogleFonts.literata(
-                                color: AppColors().primaryColor,
+                                color: themeState ? Colors.white : AppColors().primaryColor,
                                 fontWeight: FontWeight.w600,
                               ),
                               maxFontSize: 16,
@@ -109,7 +113,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                             height: 50,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
+                              color: themeState ? AppColors().dark : Colors.white,
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Center(
@@ -117,7 +121,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                                 langState ? "Time of Planting" : "Panahon ng Pagtatanim",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.literata(
-                                    color: AppColors().primaryColor,
+                                    color:  themeState ? Colors.white : AppColors().primaryColor,
                                     fontWeight: FontWeight.w600,
                                 ),
                                 maxFontSize: 16,
@@ -129,7 +133,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                             height: 50,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
+                              color: themeState ? AppColors().dark : Colors.white,
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Center(
@@ -137,7 +141,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                                 "Maturity",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.literata(
-                                    color: AppColors().primaryColor,
+                                    color: themeState ? Colors.white : AppColors().primaryColor,
                                     fontWeight: FontWeight.w600,
                                 ),
                                 maxFontSize: 16,
@@ -166,7 +170,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
+                                  color: themeState ? AppColors().dark : Colors.white,
                                   image: DecorationImage(
                                     image: AssetImage("assets/images/calendar/${index+1}.png"),
                                     fit: BoxFit.cover
@@ -191,7 +195,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                               height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
+                                color: themeState ? AppColors().dark : Colors.white,
                               ),
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Center(
@@ -199,7 +203,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                                   langState ? FoodDetails[1][index] : FoodDetailsTagalog[1][index],
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.literata(
-                                      color: AppColors().primaryColor,
+                                      color: themeState ? Colors.white : AppColors().primaryColor,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16
                                   ),
@@ -210,7 +214,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                               height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
+                                color: themeState ? AppColors().dark : Colors.white,
                               ),
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Center(
@@ -218,7 +222,7 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                                   FoodDetails[2][index],
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.literata(
-                                      color: AppColors().primaryColor,
+                                      color: themeState ? Colors.white : AppColors().primaryColor,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16
                                   ),
@@ -242,35 +246,57 @@ class _Item3ViewState extends ConsumerState<Item3View> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const SizedBox(width: 20,),
                         SizedBox(
                           height: 90,
                           child: Lottie.asset(
                             'assets/lottie/brocolli.json',
                           ),
                         ),
-                        SizedBox(
-                          height: 90,
-                          child: Lottie.asset(
-                            'assets/lottie/mushroom.json',
+                        Transform.translate(
+                          offset: const Offset(-40, 0),
+                          child: SizedBox(
+                            height: 80,
+                            child: Lottie.asset(
+                              'assets/lottie/mushroom.json',
+                            ),
                           ),
                         ),
-                        const Spacer(),
-                        SizedBox(
-                          height: 100,
-                          width: 100,
-                          child: OverflowBox(
-                            maxHeight: 175,
-                            maxWidth: 175,
-                            child: SizedBox(
-                              height: 400,
-                              width: 300,
-                              child: Transform(
-                                alignment: FractionalOffset.center,
-                                transform: Matrix4.rotationY(180),//.rotateY(180),
-                                child: Lottie.asset(
-                                  'assets/lottie/cart.json',
-                                  fit: BoxFit.cover,
+                        Transform.translate(
+                          offset: const Offset(-70, 0),
+                          child: SizedBox(
+                            height: 90,
+                            child: Lottie.asset(
+                              'assets/lottie/brocolli.json',
+                            ),
+                          ),
+                        ),
+                        Transform.translate(
+                          offset: const Offset(-100, 0),
+                          child: SizedBox(
+                            height: 80,
+                            child: Lottie.asset(
+                              'assets/lottie/mushroom.json',
+                            ),
+                          ),
+                        ),
+                        Transform.translate(
+                          offset: const Offset(-40, 0),
+                          child: SizedBox(
+                            height: 0,
+                            width: 0,
+                            child: OverflowBox(
+                              maxHeight: 175,
+                              maxWidth: 175,
+                              child: SizedBox(
+                                height: 400,
+                                width: 300,
+                                child: Transform(
+                                  alignment: FractionalOffset.center,
+                                  transform: Matrix4.rotationY(180),//.rotateY(180),
+                                  child: Lottie.asset(
+                                    'assets/lottie/cart.json',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),

@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gaia/ViewModel/DarkViewModel.dart';
+import 'package:gaia/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -62,13 +64,17 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
   Widget build(BuildContext context) {
 
     var lang = ref.watch(langProvider);
+    var dark = ref.watch(darkProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var themeState = ref.read(darkProvider.notifier).state;
+
+    var value = false;
 
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
+        child: Container(
           width: MediaQuery.of(context).size.width,
-          //color: Color(0xff414141),
+          color: themeState ? AppColors().dark : Colors.white,
           child: Stack(
             children: [
               Align(
@@ -150,7 +156,8 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                             child: AutoSizeText(
                               "What are you willing to learn?",
                               style: GoogleFonts.clickerScript(
-                                fontSize: 30
+                                fontSize: 30,
+                                color: themeState ? Colors.white : Colors.black,
                               ),
                               maxLines: 1,
                               maxFontSize: 50,
@@ -162,12 +169,13 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                               ref.read(langProvider.notifier).changeLang(!(ref.read(langProvider.notifier).state));
                               print(ref.read(langProvider.notifier).state);
                             },
-                            icon: const Icon(Icons.language),
+                            icon: Icon(Icons.language, color: themeState ? Colors.white : Colors.black,),
                           ),
                           Switch(
-                            value: true,
-                            onChanged: (value) {
-
+                            value: ref.read(darkProvider.notifier).state,
+                            onChanged: (value1) {
+                              print("pressed");
+                              ref.read(darkProvider.notifier).changeTheme(value1);
                             },
                           ),
                         ],
@@ -199,8 +207,11 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                             AutoSizeText(
                                               langState ? itemTitles[((index + 1) * 2)-2] : itemTitlesTagalog[((index + 1) * 2)-2],
                                              // itemTitles[((index + 1) * 2)-2],
+
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.literata(),
+                                              style: GoogleFonts.literata(
+                                                color: themeState ? Colors.white : Colors.black,
+                                              ),
                                               maxLines: 2,
                                               maxFontSize: 26,
                                               minFontSize: 16,
@@ -233,7 +244,9 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                                 langState ? itemTitles[((index + 1) * 2) -1 ] : itemTitlesTagalog[((index + 1) * 2) -1 ],
                                                 //itemTitles[((index + 1) * 2) -1 ],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.literata(),
+                                                style: GoogleFonts.literata(
+                                                  color: themeState ? Colors.white : Colors.black,
+                                                ),
                                                 maxLines: 2,
                                                 maxFontSize: 26,
                                                 minFontSize: 16,

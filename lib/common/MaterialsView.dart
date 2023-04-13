@@ -48,11 +48,11 @@ class _MaterialsViewState extends ConsumerState<MaterialsView> {
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Transform.translate(
-              offset: const Offset(0, 20),
-              child: Chip(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0, bottom: 0),
+          child: Column(
+            children: [
+              Chip(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 label: Text(
                   widget.title,
@@ -62,27 +62,28 @@ class _MaterialsViewState extends ConsumerState<MaterialsView> {
                       fontSize: 18),
                 ),
               ),
-            ),
-            Expanded(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  widget.image,
-                  alignment: Alignment.center,
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-            if (_bannerAd != null)
-              Align(
-                alignment: Alignment.bottomCenter,
+              Expanded(
                 child: SizedBox(
-                  width: _bannerAd!.size.width.toDouble(),
-                  height: _bannerAd!.size.height.toDouble(),
-                  child: AdWidget(ad: _bannerAd!),
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset(
+                    widget.image,
+                    alignment: Alignment.center,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
-          ],
+              SizedBox(height: 50.0),
+              if (_bannerAd != null)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    width: _bannerAd!.size.width.toDouble(),
+                    height: _bannerAd!.size.height.toDouble(),
+                    child: AdWidget(ad: _bannerAd!),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

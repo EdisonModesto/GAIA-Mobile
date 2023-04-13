@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../constants/colors.dart';
 
@@ -21,6 +22,9 @@ class _Item5ViewState extends ConsumerState<Item5View> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
+
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -44,6 +48,8 @@ class _Item5ViewState extends ConsumerState<Item5View> {
                     });
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -57,7 +63,7 @@ class _Item5ViewState extends ConsumerState<Item5View> {
                         child: Text(
                           "What is Soil Mixtures?",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white :  AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -78,6 +84,8 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                     });
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -91,7 +99,7 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                         child: Text(
                           "Mixture for Fowering Plants",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white :  AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -124,6 +132,8 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                     });
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -137,7 +147,7 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                         child: Text(
                           "Mix for Vegetable Plants",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white :  AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),
@@ -170,6 +180,7 @@ Sa halo na ito, maaari mo lamang palaguin ang iyong panloob na hardin ng bulakla
                     });
                   },
                   child: Chip(
+                    backgroundColor: themeState ? AppColors().dark : Colors.white,
                     avatar: Lottie.asset(
                         "assets/lottie/prefix.json",
                         height: 200,
@@ -183,7 +194,7 @@ Sa halo na ito, maaari mo lamang palaguin ang iyong panloob na hardin ng bulakla
                         child: Text(
                           "Mixture for Indoor Plants",
                           style: GoogleFonts.literata(
-                              color: AppColors().primaryColor,
+                              color: themeState ? Colors.white :  AppColors().primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 18
                           ),

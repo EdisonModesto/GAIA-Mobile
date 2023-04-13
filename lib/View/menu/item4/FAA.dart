@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
+import '../../../constants/colors.dart';
 
 class FAA extends ConsumerStatefulWidget {
   const FAA({
@@ -20,6 +22,8 @@ class _FAAState extends ConsumerState<FAA> {
   Widget build(BuildContext context) {
     var lang = ref.watch(langProvider);
     var langState = ref.read(langProvider.notifier).state;
+    var dark = ref.watch(darkProvider);
+    var themeState = ref.read(darkProvider.notifier).state;
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -68,6 +72,8 @@ SOURCE: Department of Agriculture"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -80,7 +86,7 @@ SOURCE: Department of Agriculture"""
                               child: Text(
                                 langState ? "Whats is Fish Amino Acid" : "Ano ang Fish Amino Acid",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -97,6 +103,8 @@ SOURCE: Department of Agriculture"""
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -110,7 +118,7 @@ SOURCE: Department of Agriculture"""
                               child: Text(
                                 langState? "Materials" : "Materyales",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -147,6 +155,8 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -160,7 +170,7 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                               child: Text(
                                 langState ? "Steps" : "Paraan ng Paggawa",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -174,13 +184,13 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                           context.pushNamed("desc", params: {
                             "title": "How to use FAA?",
                             "image": "assets/images/faaBenefits.png",
-
-                            "desc": langState ? """1. Mix 1-2 cans of KBI sardines per 16 liters of water or a knapsack sprayer of water.
+                            "desc": langState ?
+                            """1. Mix 1-2 cans of KBI sardines per 16 liters of water or a knapsack sprayer of water.
 
 2. Water or spray on the plant in the morning or in the afternoon as a growth booster for young plants and nutritional support for fruiting vegetables and fruits. Apply once a week or once every two weeks 14 days after germination or transplanting until fruiting.
 
 3. As a pet food supplement, mix 2 tablespoons of KBI with each meal or one tablespoon of KBI per liter of drinking water.
-""" : """1. Ihalo ang 1-2 lata ng sardinas na KBI sa bawat 16 litrong tubig o isang knapsack sprayer na tubig.
+""".trim() : """1. Ihalo ang 1-2 lata ng sardinas na KBI sa bawat 16 litrong tubig o isang knapsack sprayer na tubig.
 
 2. Idilig o i-sprey sa halaman sa umaga o sa hapon bilang pampalago sa mga batang halaman at suportang pagkain sa mga namumungang gulay at prutas. Maglagay minsan sa isang linggo o minsan bawat dalawang linggo 14 na araw pagkasibol ng mga binhi o pagkalipat-tanim hanggang sa pamumunga.
 
@@ -188,6 +198,8 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -200,7 +212,7 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                               child: Text(
                                 langState ? "How to use FAA" : "Paraan ng Paggamit ng FAA",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
@@ -227,6 +239,8 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                           });
                         },
                         child: Chip(
+                          backgroundColor: themeState ? AppColors().dark : Colors.white,
+
                           avatar: Lottie.asset(
                               "assets/lottie/prefix.json",
                               height: 200,
@@ -239,7 +253,7 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                               child: Text(
                                 "Benefits of FFJ",
                                 style: GoogleFonts.literata(
-                                    color: Colors.black,
+                                    color: themeState ? Colors.white : Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18
                                 ),
