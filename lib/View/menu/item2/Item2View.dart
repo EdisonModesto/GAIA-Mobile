@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../common/PageView.dart';
+import '../../../constants/adHelper.dart';
 import '../../../constants/colors.dart';
 
 class Item2View extends ConsumerStatefulWidget {
@@ -20,6 +22,7 @@ class Item2View extends ConsumerStatefulWidget {
 
 class _Item2ViewState extends ConsumerState<Item2View> {
 
+  InterstitialAd? _interstitialAd;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,29 @@ class _Item2ViewState extends ConsumerState<Item2View> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () async {
+                  await InterstitialAd.load(
+                    adUnitId: AdHelper.interstitialAdUnitId,
+                    request: const AdRequest(),
+                    adLoadCallback: InterstitialAdLoadCallback(
+                      onAdLoaded: (ad) {
+                        ad.fullScreenContentCallback = FullScreenContentCallback(
+                          onAdDismissedFullScreenContent: (ad) {
+
+                          },
+                        );
+
+                        _interstitialAd = ad;
+
+                      },
+                      onAdFailedToLoad: (err) {
+                        print('Failed to load an interstitial ad: ${err.message}');
+                      },
+                    ),
+                  ).whenComplete(() async {
+                    await Future.delayed(const Duration(seconds: 1));
+                    _interstitialAd?.show();
+                  });
                   context.pushNamed("desc", params: {
                     "title": "Backyard Gardening",
                     "image": "assets/images/byGarden.png",
@@ -77,7 +102,29 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                 ),
               ),
               InkWell(
-                onTap: (){
+                onTap: () async {
+                  await InterstitialAd.load(
+                    adUnitId: AdHelper.interstitialAdUnitId,
+                    request: const AdRequest(),
+                    adLoadCallback: InterstitialAdLoadCallback(
+                      onAdLoaded: (ad) {
+                        ad.fullScreenContentCallback = FullScreenContentCallback(
+                          onAdDismissedFullScreenContent: (ad) {
+
+                          },
+                        );
+
+                        _interstitialAd = ad;
+
+                      },
+                      onAdFailedToLoad: (err) {
+                        print('Failed to load an interstitial ad: ${err.message}');
+                      },
+                    ),
+                  ).whenComplete(() async {
+                    await Future.delayed(const Duration(seconds: 1));
+                    _interstitialAd?.show();
+                  });
                   context.push("/backyardGardening");
                 },
                 child: Chip(

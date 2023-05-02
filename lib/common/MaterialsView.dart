@@ -27,7 +27,7 @@ class _MaterialsViewState extends ConsumerState<MaterialsView> {
     // TODO: Load a banner ad
     BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
-      request: AdRequest(),
+      request: const AdRequest(),
       size: AdSize.banner,
       listener: BannerAdListener(
         onAdLoaded: (ad) {
@@ -68,11 +68,11 @@ class _MaterialsViewState extends ConsumerState<MaterialsView> {
                   child: Image.asset(
                     widget.image,
                     alignment: Alignment.center,
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit .contain,
                   ),
                 ),
               ),
-              SizedBox(height: 50.0),
+              const SizedBox(height: 50.0),
               if (_bannerAd != null)
                 Align(
                   alignment: Alignment.bottomCenter,

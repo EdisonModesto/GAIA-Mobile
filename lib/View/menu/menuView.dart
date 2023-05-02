@@ -6,9 +6,11 @@ import 'package:gaia/ViewModel/DarkViewModel.dart';
 import 'package:gaia/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../ViewModel/LanugageViewModel.dart';
+import '../../constants/adHelper.dart';
 
 class MenuView extends ConsumerStatefulWidget {
   const MenuView({
@@ -22,6 +24,7 @@ class MenuView extends ConsumerStatefulWidget {
 class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderStateMixin {
 
   late AnimationController controller;
+  InterstitialAd? _interstitialAd;
 
   var itemTitles = [
     "What is Urban Farming?",
@@ -51,6 +54,9 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
       duration: const Duration(seconds: 1),
       vsync: this,
     )..forward();
+
+
+
     super.initState();
   }
 
@@ -196,7 +202,29 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                         child: Column(
                                           children: [
                                             InkWell(
-                                              onTap: () {
+                                              onTap: () async {
+                                                await InterstitialAd.load(
+                                                  adUnitId: AdHelper.interstitialAdUnitId,
+                                                  request: const AdRequest(),
+                                                  adLoadCallback: InterstitialAdLoadCallback(
+                                                    onAdLoaded: (ad) {
+                                                      ad.fullScreenContentCallback = FullScreenContentCallback(
+                                                        onAdDismissedFullScreenContent: (ad) {
+
+                                                        },
+                                                      );
+
+                                                      _interstitialAd = ad;
+
+                                                    },
+                                                    onAdFailedToLoad: (err) {
+                                                      print('Failed to load an interstitial ad: ${err.message}');
+                                                    },
+                                                  ),
+                                                ).whenComplete(() async {
+                                                  await Future.delayed(const Duration(seconds: 1));
+                                                  _interstitialAd?.show();
+                                                });
                                                 context.push("/item${((index + 1) * 2)-1}");
                                               },
                                               child: Image.asset(
@@ -228,7 +256,29 @@ class _MenuViewState extends ConsumerState<MenuView> with SingleTickerProviderSt
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: List.generate(4, (index){
                                       return InkWell(
-                                        onTap: () {
+                                        onTap: () async {
+                                          await InterstitialAd.load(
+                                            adUnitId: AdHelper.interstitialAdUnitId,
+                                            request: const AdRequest(),
+                                            adLoadCallback: InterstitialAdLoadCallback(
+                                              onAdLoaded: (ad) {
+                                                ad.fullScreenContentCallback = FullScreenContentCallback(
+                                                  onAdDismissedFullScreenContent: (ad) {
+
+                                                  },
+                                                );
+
+                                                _interstitialAd = ad;
+
+                                              },
+                                              onAdFailedToLoad: (err) {
+                                                print('Failed to load an interstitial ad: ${err.message}');
+                                              },
+                                            ),
+                                          ).whenComplete(() async {
+                                            await Future.delayed(const Duration(seconds: 1));
+                                            _interstitialAd?.show();
+                                          });
                                           context.push("/item${((index + 1) * 2)}");
                                         },
                                         child: Container(
