@@ -1,9 +1,8 @@
 <img src="/assets/images/gaia_logo.png" height="200">
 
-# LutoJuan Mobile
+# GAIA Mobile
 
-Luto Juan is a revolutionary cooking app designed to help you prepare delicious, healthy, and affordable meals from the comfort of your own kitchen. With Luto Juan, you can browse through a wide range of recipes, and learn how to cook like a pro.
-
+GAIA Mobile has everything you need to grow your own fresh produce right at home
 
 ## Screenshots
 
@@ -15,11 +14,8 @@ Luto Juan is a revolutionary cooking app designed to help you prepare delicious,
 
 Here're some of the project's best features:
 
-- View Recipes
-- Generate Recipes
-- Calorie Tracker
-- Daily Articles
-- Daily Trivia
+- Plant Calendar
+- Curated content on how to grow your own fresh produce right at home
 
 
 
@@ -29,7 +25,8 @@ Technologies used in the project:
 
 *   Flutter
 *   Firebase
-*   NPoint
+*   Admoob
+*   Lottie
 
 
 
