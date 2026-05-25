@@ -62,7 +62,7 @@ class _HydrophonicsState extends ConsumerState<Hydrophonics> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Hydrophonics",
                             "image": "assets/images/whatHydro.png",
                             "desc": langState ? """Instead of soil, it uses water to provide sustenance and nutrition to the plant. This is suitable for developed areas that have little arable land. Its start-up cost may be higher.
@@ -109,7 +109,7 @@ SOURCE: DEPARTMENT OF AGRICULTURE"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("materials", params: {
+                          context.pushNamed("materials", pathParameters: {
                             "title": "Materials",
                             "image": "assets/images/hydroMaterials.png",
                           });
@@ -141,7 +141,7 @@ SOURCE: DEPARTMENT OF AGRICULTURE"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Steps",
                             "desc": langState ? """1. Create a small hole in the bottom of the styro cups and put coconut husk or sand just enough for the seedling to stick to.
 

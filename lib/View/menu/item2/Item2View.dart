@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../ViewModel/DarkViewModel.dart';
 import '../../../ViewModel/LanugageViewModel.dart';
 import '../../../common/PageView.dart';
-import '../../../constants/adHelper.dart';
 import '../../../constants/colors.dart';
 
 class Item2View extends ConsumerStatefulWidget {
@@ -21,9 +19,6 @@ class Item2View extends ConsumerStatefulWidget {
 }
 
 class _Item2ViewState extends ConsumerState<Item2View> {
-
-  InterstitialAd? _interstitialAd;
-
   @override
   Widget build(BuildContext context) {
 
@@ -47,30 +42,8 @@ class _Item2ViewState extends ConsumerState<Item2View> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: () async {
-                  await InterstitialAd.load(
-                    adUnitId: AdHelper.interstitialAdUnitId,
-                    request: const AdRequest(),
-                    adLoadCallback: InterstitialAdLoadCallback(
-                      onAdLoaded: (ad) {
-                        ad.fullScreenContentCallback = FullScreenContentCallback(
-                          onAdDismissedFullScreenContent: (ad) {
-
-                          },
-                        );
-
-                        _interstitialAd = ad;
-
-                      },
-                      onAdFailedToLoad: (err) {
-                        print('Failed to load an interstitial ad: ${err.message}');
-                      },
-                    ),
-                  ).whenComplete(() async {
-                    await Future.delayed(const Duration(seconds: 1));
-                    _interstitialAd?.show();
-                  });
-                  context.pushNamed("desc", params: {
+                onTap: () {
+                  context.pushNamed("desc", pathParameters: {
                     "title": "Backyard Gardening",
                     "image": "assets/images/byGarden.png",
                     "desc": langState ? """Backyard Gardening is converting an open area into a productive and usable area for the family and a home for plants and animals that would otherwise be displaced by urban development. Backyard gardens benefit communities by encouraging you ti eat more fresh fruits and vegetables. Garden-ripened veggies have more nutrients than store-bought vegetables that must be harvested early.
@@ -102,29 +75,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
                 ),
               ),
               InkWell(
-                onTap: () async {
-                  await InterstitialAd.load(
-                    adUnitId: AdHelper.interstitialAdUnitId,
-                    request: const AdRequest(),
-                    adLoadCallback: InterstitialAdLoadCallback(
-                      onAdLoaded: (ad) {
-                        ad.fullScreenContentCallback = FullScreenContentCallback(
-                          onAdDismissedFullScreenContent: (ad) {
-
-                          },
-                        );
-
-                        _interstitialAd = ad;
-
-                      },
-                      onAdFailedToLoad: (err) {
-                        print('Failed to load an interstitial ad: ${err.message}');
-                      },
-                    ),
-                  ).whenComplete(() async {
-                    await Future.delayed(const Duration(seconds: 1));
-                    _interstitialAd?.show();
-                  });
+                onTap: () {
                   context.push("/backyardGardening");
                 },
                 child: Chip(
@@ -183,7 +134,7 @@ class _Item2ViewState extends ConsumerState<Item2View> {
               ),
               InkWell(
                 onTap: (){
-                  context.pushNamed("desc", params: {
+                  context.pushNamed("desc", pathParameters: {
                     "title": "Vertical/Wall Farming",
                     "image": "assets/images/wallGardening.png",
                     "desc": langState ? """This method is the most economical in area and space. This is suitable for buildings where the walls are exposed to direct sunlight.
@@ -278,7 +229,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
               ),
               InkWell(
                 onTap: (){
-                  context.pushNamed("desc", params: {
+                  context.pushNamed("desc", pathParameters: {
                     "title": "Rooftop Gardening",
                     "image": "assets/images/RooftopGardening.png",
                     "desc": langState?"Rooftop gardening is a sort of urban agriculture that involves growing food on the roofs of buildings. Aside from aesthetics, rooftop gardens provide architectural enhancement, temperature control, recreational opportunities, wildlife habitats, and even a space for growing food."

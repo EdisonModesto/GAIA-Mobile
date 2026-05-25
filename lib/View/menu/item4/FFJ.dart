@@ -62,7 +62,7 @@ class _FFJState extends ConsumerState<FFJ> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Fermented Fruit Juice",
                             "image": "assets/images/whatFFJ.png",
                             "desc": langState? """Fruit juice/Katas ng Burong Prutas (KBP) or better known as fermented fruit juice (FFJ) is a fruit juice rich in vitamins, enzymes and hormones. The best fruit juices are potassium-rich fruits such as bananas, mangoes, papayas, avocados and leafy vegetables.
@@ -98,7 +98,7 @@ SOURCE: Department of Agriculture"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Materials",
                             "image": "assets/images/ffjMaterials.png",
                             "desc": """
@@ -141,7 +141,7 @@ SOURCE: Department of Agriculture
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Steps",
                             "desc": langState? """1. Cut small 1 pound of ripe fruit. Do not include the skin and seeds of the fruit except the banana. Bananas, manga, papaya and avocado can be used. The ripe pumpkin can also be used,
 
@@ -197,7 +197,7 @@ https://drive.google.com/drive/folders/1l-FK0qPhX0-Wsd3zM1rfVCpKUxMIICyJ?usp=sha
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "How to use FPJ?",
                             "desc": langState?"""1. Mix 2 tablespoons FFJ or 20 ml in 1 liter of water or 2 cans of sardines per 16 liters of water.
 
@@ -245,7 +245,7 @@ SOURCE: Department of Agriculture"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Benefits of FFJ",
                             "desc": langState ? """1. It increases the element of plant need through the roots and stems.
                             

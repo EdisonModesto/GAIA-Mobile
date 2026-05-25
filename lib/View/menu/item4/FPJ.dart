@@ -61,7 +61,7 @@ class _FPJState extends ConsumerState<FPJ> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Fermented Plant Juice",
                             "image": "assets/images/vegMix.png",
                             "desc": langState ? """Fermented plant juice (FPJ) is made from the juice of the plant's fermented leaves, sprouts, and stems. It comes from chlorophyll (the reason why the plant is green) and growth hormone that helps the growth and development of the crop. It is essential to select plants that grow quickly (such as bananas, kangkong, sweet potatoes, and duckweed) in the production of Fermented Plant Juice (FPJ). It is better if the materials used are from the stems and leaves of the plant it will be used for.
@@ -101,7 +101,7 @@ SOURCE: DEPARTMENT OF AGRICULTURE"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("materials", params: {
+                          context.pushNamed("materials", pathParameters: {
                             "title": "Materials",
                             "image": "assets/images/fpjMaterials.png",
                           });
@@ -133,7 +133,7 @@ SOURCE: DEPARTMENT OF AGRICULTURE"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Steps",
                             "desc": langState ? """1. Cut a shoot from the sap of a banana, sweet potato, water spinach, malabar spinach or bamboo shoots.
 
@@ -192,7 +192,7 @@ SOURCE: DEPARTMENT OF AGRICULTURE"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "How to use FPJ?",
                             "desc": langState? """1. Mix 2 tablespoons FFJ or 20 ml in 1 liter of water or 2 cans of sardines per 16 liters of water.
 

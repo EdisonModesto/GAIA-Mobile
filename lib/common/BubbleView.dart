@@ -2,10 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../ViewModel/DarkViewModel.dart';
-import '../constants/adHelper.dart';
 import '../constants/colors.dart';
 
 class BubbleView extends ConsumerStatefulWidget {
@@ -23,29 +21,6 @@ class BubbleView extends ConsumerStatefulWidget {
 }
 
 class _BubbleViewState extends ConsumerState<BubbleView> {
-  BannerAd? _bannerAd;
-
-  @override
-  void initState() {
-    // TODO: Load a banner ad
-    BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          setState(() {
-            _bannerAd = ad as BannerAd;
-          });
-        },
-        onAdFailedToLoad: (ad, err) {
-          print('Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    ).load();
-  }
-
   @override
   Widget build(BuildContext context) {
     var dark = ref.watch(darkProvider);
@@ -99,18 +74,7 @@ class _BubbleViewState extends ConsumerState<BubbleView> {
                   ],
                 ),
               ),
-              SizedBox(
-                child: _bannerAd != null ? Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SizedBox(
-                    width: _bannerAd!.size.width.toDouble(),
-                    height: _bannerAd!.size.height.toDouble(),
-                    child: AdWidget(ad: _bannerAd!),
-                  ),
-                ) :
-                  SizedBox()
-              )
-
+              SizedBox()
             ],
           ),
         ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../constants/adHelper.dart';
 import '../constants/colors.dart';
 
 class MaterialsView extends ConsumerStatefulWidget {
@@ -20,29 +18,6 @@ class MaterialsView extends ConsumerStatefulWidget {
 }
 
 class _MaterialsViewState extends ConsumerState<MaterialsView> {
-  BannerAd? _bannerAd;
-
-  @override
-  void initState() {
-    // TODO: Load a banner ad
-    BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          setState(() {
-            _bannerAd = ad as BannerAd;
-          });
-        },
-        onAdFailedToLoad: (ad, err) {
-          print('Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    ).load();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,15 +48,6 @@ class _MaterialsViewState extends ConsumerState<MaterialsView> {
                 ),
               ),
               const SizedBox(height: 50.0),
-              if (_bannerAd != null)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SizedBox(
-                    width: _bannerAd!.size.width.toDouble(),
-                    height: _bannerAd!.size.height.toDouble(),
-                    child: AdWidget(ad: _bannerAd!),
-                  ),
-                ),
             ],
           ),
         ),

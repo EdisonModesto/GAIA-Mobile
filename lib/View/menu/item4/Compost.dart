@@ -61,7 +61,7 @@ class _CompostViewState extends ConsumerState<CompostView> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Compost",
                             "image": "assets/images/compost.png",
                             "desc": langState ? """Compost is an organic substance that can be added to soil to aid in the growth of plants. More than 30% of our garbage comprises food leftovers and yard debris, which may be composted. These materials can be composted instead of disposed of in landfills, which take up space and release the potent greenhouse gas methane."""
@@ -94,7 +94,7 @@ class _CompostViewState extends ConsumerState<CompostView> {
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Compost Materials",
                             "image": "assets/images/compost.png",
                             "desc": langState ? """Ingredients/Materials:
@@ -139,7 +139,7 @@ class _CompostViewState extends ConsumerState<CompostView> {
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Compost Steps",
                             "image": "assets/images/compost.png",
                             "desc": langState ? """Step 1: Get a compost bin
@@ -183,7 +183,7 @@ https://www.youtube.com/watch?v=F4AicGPEmL8"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Use of Compost",
                             "image": "assets/images/compost.png",
                             "desc": """Compost can be use as soil amendments, seed starter,  and natural fertilizer. add it to your soil composition to make your plant healthy."""

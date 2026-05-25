@@ -64,7 +64,7 @@ class _SubMenuViewState extends ConsumerState<BackGardeningView> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Container Gardening",
                             "image": "assets/images/oldBarrels.png",
                             "desc": langState ? """It also uses soil but is placed in a container like pot. It is suitable for rocky homes and poor soil conditions.
@@ -111,7 +111,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("materials", params: {
+                          context.pushNamed("materials", pathParameters: {
                             "title": "Materials",
                             "image": "assets/images/containerMaterials.png",
                           });
@@ -142,7 +142,7 @@ SOURCE: BUREAU OF PLANT INDUSTRY"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Steps",
                             "desc": langState ?  """1. Create a hole the top of the bottle. Each hole is one inch apart.
 2, Place the planting soil.

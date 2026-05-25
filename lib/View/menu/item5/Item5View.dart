@@ -41,7 +41,7 @@ class _Item5ViewState extends ConsumerState<Item5View> {
               children: [
                 InkWell(
                   onTap: (){
-                    context.pushNamed("bubble", params: {
+                    context.pushNamed("bubble", pathParameters: {
                       "title": "Soil Mixtures",
                       "desc": langState ? """Any appropriate soil mix, including compost from various plant sources, such as bark or manure, acts as a 'booster' for plants. Organic Fertilizers are frequently added to soil mixes to increase and extend this effect""" : """Anumang angkop na paghahalo ng lupa, kabilang ang compost mula sa iba't ibang pinagmumulan ng halaman, tulad ng bark o pataba, ay nagsisilbing "booster" para sa mga halaman. Ang mga organikong pataba ay madalas na idinadagdag sa mga paghahalo ng lupa upang madagdagan at mapalawak ang epektong ito.""",
                       "image": "assets/images/organicBG.png",
@@ -74,7 +74,7 @@ class _Item5ViewState extends ConsumerState<Item5View> {
                 ),
                 InkWell(
                   onTap: (){
-                    context.pushNamed("desc", params: {
+                    context.pushNamed("desc", pathParameters: {
                       "title": "Mixture for Fowering Plants",
                       "image": "assets/images/mixtureFowering.png",
                       "desc": langState ? """The best mix for the flowering plant is Sandy loam is composed of 50 to 70% sand, less than 20% clay, and 10 to 50% silt or organic matter. So, if your existing soil contains 20% sand, you'll need to add enough sand up to 50%. If your soil contains 40% clay, you must add enough sand or compost to reduce that percentage.
@@ -110,7 +110,7 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                 ),
                 InkWell(
                   onTap: (){
-                    context.pushNamed("desc", params: {
+                    context.pushNamed("desc", pathParameters: {
                       "title": "Potting Mix for Vegetable Plant",
                       "image": "assets/images/vegMix.png",
                       "desc": langState ? """Many believe that using local soil for raised beds is the best option. This method considers the local climate and environment when growing vegetables. Begin with the basic soil mix formula: 50% compost and 50% local topsoil.
@@ -158,7 +158,7 @@ You may see additional tutorials here: https://drive.google.com/drive/folders/1l
                 ),
                 InkWell(
                   onTap: (){
-                    context.pushNamed("desc", params: {
+                    context.pushNamed("desc", pathParameters: {
                       "title": "Mixture for Indoor Plants",
                       "image": "assets/images/indoorMix.png",
                       "desc": langState ? """Potting Soil Mixing Formula to make your ideal potting soil for an indoor plant,

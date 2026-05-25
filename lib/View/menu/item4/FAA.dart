@@ -61,7 +61,7 @@ class _FAAState extends ConsumerState<FAA> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Fish Amino Acid",
                             "image": "assets/images/faaWhat.png",
                             "desc": langState ? """Fish Amino Acid (FAA) contains various elements necessary for the growth of leaves and branches of plants. It is also an alternative source of protein for livestock."""
@@ -97,7 +97,7 @@ SOURCE: Department of Agriculture"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("materials", params: {
+                          context.pushNamed("materials", pathParameters: {
                             "title": "Materials",
                             "image": "assets/images/faaMaterials.png",
                           });
@@ -129,7 +129,7 @@ SOURCE: Department of Agriculture"""
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("steps", params: {
+                          context.pushNamed("steps", pathParameters: {
                             "title": "Steps",
                             "desc": langState ? """1. Place the spines, scales, gills, and skin of the fish in a tub. Add molasses in a ratio of 1:1 kg. Mix it well.
 
@@ -181,7 +181,7 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "How to use FAA?",
                             "image": "assets/images/faaBenefits.png",
                             "desc": langState ?
@@ -223,7 +223,7 @@ SOURCE: Department of Agriculture & Quezon City University Center for Urban
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Benefits of FAA",
                             "image": "assets/images/faaBenefits.png",
                             "desc": langState? """1. Contains calcium and salt for healthy plants.

@@ -1,8 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DarkNotifier extends StateNotifier<bool> {
-  DarkNotifier() : super(false);
+class DarkNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    _loadTheme();
+    return false;
+  }
+
+  void _loadTheme() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? dark = prefs.getBool('dark');
+    if (dark != null) {
+      state = dark;
+    }
+  }
 
   void changeTheme(bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -10,7 +22,7 @@ class DarkNotifier extends StateNotifier<bool> {
     state = value;
   }
 
-  checkTheme() async {
+  Future<void> checkTheme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final bool? lang = prefs.getBool('dark');
     if (lang == null) {
@@ -19,10 +31,8 @@ class DarkNotifier extends StateNotifier<bool> {
       state = lang;
     }
   }
-
 }
 
-
-final darkProvider = StateNotifierProvider((ref){
+final darkProvider = NotifierProvider<DarkNotifier, bool>(() {
   return DarkNotifier();
 });

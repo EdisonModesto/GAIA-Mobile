@@ -37,22 +37,22 @@ var routes = GoRouter(
     GoRoute(
       path: "/desc:title/:image/:desc",
       name: "desc",
-      builder: (context, state) => DescView(title: state.params["title"], image: state.params["image"], desc: state.params["desc"],),
+      builder: (context, state) => DescView(title: state.pathParameters["title"], image: state.pathParameters["image"], desc: state.pathParameters["desc"],),
     ),
     GoRoute(
       path: "/materials:title/:image",
       name: "materials",
-      builder: (context, state) => MaterialsView(title: state.params["title"], image: state.params["image"]),
+      builder: (context, state) => MaterialsView(title: state.pathParameters["title"], image: state.pathParameters["image"]),
     ),
     GoRoute(
       path: "/steps:title/:desc",
       name: "steps",
-      builder: (context, state) => StepsView(title: state.params["title"], desc: state.params["desc"]),
+      builder: (context, state) => StepsView(title: state.pathParameters["title"], desc: state.pathParameters["desc"]),
     ),
     GoRoute(
       path: "/bubble:title/:image/:desc",
       name: "bubble",
-      builder: (context, state) => BubbleView(title: state.params["title"], image: state.params["image"], desc: state.params["desc"],),
+      builder: (context, state) => BubbleView(title: state.pathParameters["title"], image: state.pathParameters["image"], desc: state.pathParameters["desc"],),
     ),
     GoRoute(
       path: "/pageView",

@@ -42,7 +42,7 @@ class _Item8ViewState extends ConsumerState<Item8View> {
           children: [
             InkWell(
               onTap: () {
-                context.pushNamed("bubble", params: {
+                context.pushNamed("bubble", pathParameters: {
                   "title": langState
                       ? "Recyclable Ideas"
                       : "Mga Recyclable na Ideya",

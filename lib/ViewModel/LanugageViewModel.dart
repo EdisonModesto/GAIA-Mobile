@@ -1,8 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LangNotifier extends StateNotifier<bool> {
-  LangNotifier() : super(true);
+class LangNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    _loadLang();
+    return true;
+  }
+
+  void _loadLang() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? lang = prefs.getBool('lang');
+    if (lang != null) {
+      state = lang;
+    }
+  }
 
   void changeLang(bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -10,7 +22,7 @@ class LangNotifier extends StateNotifier<bool> {
     state = value;
   }
 
-  checkLang() async {
+  Future<void> checkLang() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final bool? lang = prefs.getBool('lang');
     if (lang == null) {
@@ -19,11 +31,8 @@ class LangNotifier extends StateNotifier<bool> {
       state = lang;
     }
   }
-
-
 }
 
-
-final langProvider = StateNotifierProvider((ref){
+final langProvider = NotifierProvider<LangNotifier, bool>(() {
   return LangNotifier();
 });

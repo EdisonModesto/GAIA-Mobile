@@ -61,7 +61,7 @@ class _EggShellState extends ConsumerState<EggShell> {
                     children: [
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Egg shell (Calphos)",
                             "image": "assets/images/eggshells.png",
                             "desc": langState ? """Calphos is used to remediate calcium deficient soil and works best on plants that are just starting to bloom. Or the change from vegetative to reproductive growth in plants brings about several changes in how nutrients and other valuable elements are acquired. Calcium is in charge of strengthening the plant by stabilizing its structure, which includes the roots, stems, and leaves, which will support the production of heavy fruit or flowers."""
@@ -94,7 +94,7 @@ class _EggShellState extends ConsumerState<EggShell> {
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Egg shell (Calphos) Materials",
                             "image": "assets/images/eggshells.png",
                             "desc": langState ? """Ingredients and materials/
@@ -150,7 +150,7 @@ Mga sangkap:
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Calphos Steps",
                             "image": "assets/images/stepEgg.png",
                             "desc": langState ? """Step 1: Crushed all the eggshells, oysters, and muscle shells into the mortar and pestle or crushed it with rolling wood or bottle.
@@ -198,7 +198,7 @@ Step 4: Hintaying huminto ang reaksiyong kemikal at pagkatapos ay takpan ang lal
                       ),
                       InkWell(
                         onTap: (){
-                          context.pushNamed("desc", params: {
+                          context.pushNamed("desc", pathParameters: {
                             "title": "Use of Calphos",
                             "image": "assets/images/useEgg.png",
                             "desc": langState ? """The ratio is 10 ml calphos to 1 gallon of water for the usage. Apply it to your plant once a week.  it is better to apply at late afternoon when the sun is about to set."""
